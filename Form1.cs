@@ -25,21 +25,6 @@ namespace Medusa
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            //SqlConnection newCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\vigne\OneDrive\Documents\Visual Studio DB\MedusaDB.mdf; Integrated Security = True; Connect Timeout = 30");
-            //SqlDataAdapter fetchData = new SqlDataAdapter("Select Count(*) from Login where user_name='" + textBox1.Text + "' and password='" + textBox2.Text + "'", newCon);
-            //DataTable newTable = new DataTable();
-            //fetchData.Fill(newTable);
-            //if (newTable.Rows[0][0].ToString() == "1")
-            //{
-            //    this.Hide();
-            //    LoginMain ss = new LoginMain();
-            //    ss.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Please check the Username and Password");
-            //}
-
             var validateUser = await CheckLogin.Operations(textBox1.Text, textBox2.Text);
 
         }
