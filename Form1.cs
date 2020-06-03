@@ -50,10 +50,7 @@ namespace Medusa
             }
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void textbox(object sender, KeyEventArgs e)
         {
