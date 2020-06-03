@@ -26,7 +26,6 @@ namespace Medusa
         private async void button2_Click(object sender, EventArgs e)
         {
             var validateUser = await CheckLogin.Operations(textBox1.Text, textBox2.Text);
-
         }
 
         private async void button4_Click(object sender, EventArgs e)
