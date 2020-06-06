@@ -114,12 +114,10 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(409, 391);
+            this.textBox3.Location = new System.Drawing.Point(0, 0);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(167, 20);
-            this.textBox3.TabIndex = 9;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            this.textBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox);
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 0;
             // 
             // Form1
             // 
@@ -138,6 +136,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Text = "LOGIN WINDOW";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

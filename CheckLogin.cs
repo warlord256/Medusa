@@ -62,7 +62,7 @@ namespace Medusa
           
             await container.CreateItemAsync(registerdynamic, new PartitionKey("12344"));
             Console.WriteLine($"Created New User with ID {registerdynamic.id}");
-            object p = await container.ReplaceItemAsync<dynamic>();
+           // object p = await container.CreateItemAsync<dynamic>();
         }
 
 

@@ -25,7 +25,8 @@ namespace Medusa
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            var validateUser = await CheckLogin.Operations(textBox1.Text, textBox2.Text);
+            var validateUser = await CheckLogin.Operations(textBox1.Text, textBox2.Text); 
+
         }
 
         private async void button4_Click(object sender, EventArgs e)
@@ -50,8 +51,11 @@ namespace Medusa
             }
         }
 
-       
 
+        private void textBox3_TextChanged(object sender, KeyEventArgs e)
+        {
+
+        }
         private void textbox(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)
@@ -62,6 +66,11 @@ namespace Medusa
                 string hello = Clipboard.GetText(System.Windows.Forms.TextDataFormat.Text);
                 textBox3.Text = hello;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
