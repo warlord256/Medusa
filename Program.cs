@@ -8,111 +8,45 @@ using System.Windows.Forms;
 
 namespace Medusa
 {
-    static class Program
+     class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        
 
-        private const int WH_KEYBOARD_LL = 13;
 
-        private const int WM_KEYDOWN = 0x0100;
 
-        private static LowLevelKeyboardProc _proc = HookCallback;
 
-        private static IntPtr _hookID = IntPtr.Zero;
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+           // InterceptKeys.InitializeComponent();
+           
 
-
-
-
-
-
-            _hookID = SetHook(_proc);
-
+          
             Application.Run(new Form1());
-
-            UnhookWindowsHookEx(_hookID);
         }
-
-
-
-        private static IntPtr SetHook(LowLevelKeyboardProc proc)
-
+        protected static void myHandler(object sender, ConsoleCancelEventArgs args)
         {
+            Console.WriteLine("\nThe read operation has been interrupted.");
 
-            using (Process curProcess = Process.GetCurrentProcess())
+            Console.WriteLine($"  Key pressed: {args.SpecialKey}");
 
-            using (ProcessModule curModule = curProcess.MainModule)
+            Console.WriteLine($"  Cancel property: {args.Cancel}");
 
-            {
+            // Set the Cancel property to true to prevent the process from terminating.
+            Console.WriteLine("Setting the Cancel property to true...");
+            args.Cancel = true;
 
-                return SetWindowsHookEx(WH_KEYBOARD_LL, proc,
-
-                    GetModuleHandle(curModule.ModuleName), 0);
-
-            }
-
+            // Announce the new value of the Cancel property.
+            Console.WriteLine($"  Cancel property: {args.Cancel}");
+            Console.WriteLine("The read operation will resume...\n");
         }
-
-
-        private delegate IntPtr LowLevelKeyboardProc(
-
-            int nCode, IntPtr wParam, IntPtr lParam);
-
-
-        private static IntPtr HookCallback(
-
-            int nCode, IntPtr wParam, IntPtr lParam)
-
-        {
-
-            if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
-
-            {
-
-                int vkCode = Marshal.ReadInt32(lParam);
-
-                Console.WriteLine((Keys)vkCode);
-
-            }
-
-            return CallNextHookEx(_hookID, nCode, wParam, lParam);
-
-        }
-
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-
-        private static extern IntPtr SetWindowsHookEx(int idHook,
-
-            LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
-
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-
-        [return: MarshalAs(UnmanagedType.Bool)]
-
-        private static extern bool UnhookWindowsHookEx(IntPtr hhk);
-
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-
-        private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode,
-
-            IntPtr wParam, IntPtr lParam);
-
-
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-
-        private static extern IntPtr GetModuleHandle(string lpModuleName);
     }
-    
-    
 }
+
+      
+
+       

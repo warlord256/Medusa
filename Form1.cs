@@ -13,13 +13,34 @@ namespace Medusa
 {
     public partial class Form1 : Form
     {
+        GlobalKeyboardHook gHook;
         public Form1()
         {
             InitializeComponent();
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            gHook = new GlobalKeyboardHook(); // Create a new GlobalKeyboardHook
+                                              // Declare a KeyDown Event
+            gHook.KeyDown += new KeyEventHandler(gHook_KeyDown);
+            // Add the keys you want to hook to the HookedKeys list
+            foreach (Keys key in Enum.GetValues(typeof(Keys)))
+                gHook.HookedKeys.Add(key);
+        }
+        public void gHook_KeyDown(object sender, KeyEventArgs e)
+        {
+            // textBox1.Text += ((char)e.KeyValue).ToString();
 
+            // if(e.KeyCode == Keys.LControlKey && e.KeyCode==Keys.V)
+            if (e.Control == true && e.KeyCode == Keys.V)
+            {
+                string hello = Clipboard.GetText(System.Windows.Forms.TextDataFormat.Text);
+                textBox3.Text = hello;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            gHook.unhook();
             this.Close();
         }
 
@@ -68,9 +89,11 @@ namespace Medusa
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            gHook.hook();
         }
     }
 }
