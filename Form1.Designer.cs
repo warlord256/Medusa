@@ -39,6 +39,8 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.Hoo = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.serializedText = new System.Windows.Forms.TextBox();
+            this.lstFiles = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -52,9 +54,9 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(320, 194);
             this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(205, 20);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
             // 
@@ -140,12 +142,30 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // serializedText
+            // 
+            this.serializedText.Location = new System.Drawing.Point(318, 256);
+            this.serializedText.Name = "serializedText";
+            this.serializedText.Size = new System.Drawing.Size(207, 20);
+            this.serializedText.TabIndex = 10;
+            this.serializedText.TextChanged += new System.EventHandler(this.serializedText_TextChanged);
+            // 
+            // lstFiles
+            // 
+            this.lstFiles.FormattingEnabled = true;
+            this.lstFiles.Location = new System.Drawing.Point(166, 0);
+            this.lstFiles.Name = "lstFiles";
+            this.lstFiles.Size = new System.Drawing.Size(500, 95);
+            this.lstFiles.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(733, 450);
+            this.Controls.Add(this.lstFiles);
+            this.Controls.Add(this.serializedText);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.button4);
@@ -177,6 +197,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button Hoo;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox serializedText;
+        private System.Windows.Forms.ListBox lstFiles;
     }
 }
 
