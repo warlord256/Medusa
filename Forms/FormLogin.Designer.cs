@@ -1,6 +1,6 @@
 ﻿namespace Medusa
 {
-    partial class Form1
+    partial class FormLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textUserId = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cmdLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.Hoo = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.hook_on = new System.Windows.Forms.Button();
             this.serializedText = new System.Windows.Forms.TextBox();
             this.lstFiles = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textUserId
             // 
-            this.textBox1.Location = new System.Drawing.Point(320, 127);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(205, 20);
-            this.textBox1.TabIndex = 0;
+            this.textUserId.Location = new System.Drawing.Point(320, 127);
+            this.textUserId.Name = "textUserId";
+            this.textUserId.Size = new System.Drawing.Size(205, 20);
+            this.textUserId.TabIndex = 0;
+            this.textUserId.Text = "warlord";
             // 
             // textBox2
             // 
@@ -56,6 +56,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(205, 20);
             this.textBox2.TabIndex = 1;
+            this.textBox2.Text = "123";
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
@@ -68,15 +69,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // cmdLogin
             // 
-            this.button2.Location = new System.Drawing.Point(166, 306);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 31);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "LOGIN";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.cmdLogin.Location = new System.Drawing.Point(166, 306);
+            this.cmdLogin.Name = "cmdLogin";
+            this.cmdLogin.Size = new System.Drawing.Size(75, 31);
+            this.cmdLogin.TabIndex = 3;
+            this.cmdLogin.Text = "LOGIN";
+            this.cmdLogin.UseVisualStyleBackColor = true;
+            this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
             // 
             // label1
             // 
@@ -116,13 +117,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(0, 0);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 0;
-            // 
             // Hoo
             // 
             this.Hoo.Location = new System.Drawing.Point(612, 321);
@@ -132,15 +126,15 @@
             this.Hoo.Text = "button3";
             this.Hoo.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // hook_on
             // 
-            this.button3.Location = new System.Drawing.Point(593, 306);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 38);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Hook On";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.hook_on.Location = new System.Drawing.Point(593, 306);
+            this.hook_on.Name = "hook_on";
+            this.hook_on.Size = new System.Drawing.Size(73, 38);
+            this.hook_on.TabIndex = 9;
+            this.hook_on.Text = "Hook On";
+            this.hook_on.UseVisualStyleBackColor = true;
+            this.hook_on.Click += new System.EventHandler(this.hook_click);
             // 
             // serializedText
             // 
@@ -157,8 +151,9 @@
             this.lstFiles.Name = "lstFiles";
             this.lstFiles.Size = new System.Drawing.Size(500, 95);
             this.lstFiles.TabIndex = 11;
+            this.lstFiles.SelectedIndexChanged += new System.EventHandler(this.lstFiles_SelectedIndexChanged);
             // 
-            // Form1
+            // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,19 +161,18 @@
             this.ClientSize = new System.Drawing.Size(733, 450);
             this.Controls.Add(this.lstFiles);
             this.Controls.Add(this.serializedText);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.hook_on);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.cmdLogin);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
+            this.Controls.Add(this.textUserId);
+            this.Name = "FormLogin";
             this.Text = "LOGIN WINDOW";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,17 +180,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textUserId;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button cmdLogin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button Hoo;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button hook_on;
         private System.Windows.Forms.TextBox serializedText;
         private System.Windows.Forms.ListBox lstFiles;
     }

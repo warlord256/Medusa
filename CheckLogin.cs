@@ -10,6 +10,10 @@ namespace Medusa
 {
     class CheckLogin
     {
+        //avoid this kinda declaration refer design pattern explore the lifetime of a variable qualify it ..scope def is also important
+        //put it in a separate public class
+        private static string containerName = Program.containerName;
+        private static string dataBaseName = Program.dataBaseName;
         public  static async Task<Boolean> Operations(string userName,string passWord)
         {
             return await confirmLogin(userName, passWord);
@@ -22,13 +26,15 @@ namespace Medusa
 
         private static async Task<Boolean> confirmLogin(string userName, string passWord)
         {
-            var container = Shared.Client.GetContainer("Families", "Families");
-            var sql = "SELECT * FROM c ";
+            var container = Shared.Client.GetContainer(dataBaseName, containerName);
+            var sql = "SELECT * FROM medusadatabase";
             var iterator = container.GetItemQueryIterator<dynamic>(sql);
             var pages = await iterator.ReadNextAsync();
 
             Console.WriteLine();
             Console.WriteLine("Checking login credentials...");
+
+
 
             foreach(var itr in pages)
             {
@@ -47,24 +53,27 @@ namespace Medusa
             Console.WriteLine();
             Console.WriteLine(">>> Registering Users <<<");
 
-            var container = Shared.Client.GetContainer("Families", "Families");
+            var container = Shared.Client.GetContainer(dataBaseName, containerName);
 
             dynamic registerdynamic = new
             {
                 id = Guid.NewGuid(),
-                username = userName,
+                userId = userName,
                 password = password,
                 address = new
                 {
-                    zipCode = "12344"
+                    zipcode = "1234"
                 }
             };
-          
-            await container.CreateItemAsync(registerdynamic, new PartitionKey("12344"));
+
+            ContainerProperties properties = await container.ReadContainerAsync();
+            Console.WriteLine(properties.PartitionKeyPath);
+           // await container.CreateItemAsync(registerdynamic, new PartitionKey("/address/zipcode"));
+            await container.CreateItemAsync(registerdynamic, new PartitionKey(registerdynamic.address.zipcode));
             Console.WriteLine($"Created New User with ID {registerdynamic.id}");
            // object p = await container.CreateItemAsync<dynamic>();
         }
 
-
+      
     }
 }

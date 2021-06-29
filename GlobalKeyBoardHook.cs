@@ -42,7 +42,7 @@ public class GlobalKeyboardHook
     const int WM_SYSKEYDOWN = 0x0104;
     const int WM_SYSKEYUP = 0x0105;
 
-    LLKeyboardHook llkh;
+    private LLKeyboardHook llkh;
     public List<Keys> HookedKeys = new List<Keys>();
 
     IntPtr Hook = IntPtr.Zero;
@@ -50,7 +50,6 @@ public class GlobalKeyboardHook
     public event KeyEventHandler KeyDown;
     public event KeyEventHandler KeyUp;
 
-    // This is the Constructor. This is the code that runs every time you create a new GlobalKeyboardHook object
     public GlobalKeyboardHook()
     {
         llkh = new LLKeyboardHook(HookProc);

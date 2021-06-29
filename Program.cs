@@ -15,9 +15,9 @@ namespace Medusa
         /// </summary>
 
 
-
-
-        [STAThread]
+        public static string containerName = "loginCreds"; 
+        public static string dataBaseName = "medusadatabase"; 
+       [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
@@ -26,7 +26,7 @@ namespace Medusa
            
 
           
-            Application.Run(new Form1());
+            Application.Run(new FormLogin());
         }
         protected static void myHandler(object sender, ConsoleCancelEventArgs args)
         {

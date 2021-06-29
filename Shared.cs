@@ -16,9 +16,11 @@ namespace Medusa
 
         static Shared()
         {
-            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var endpoint = config["CosmosEndPoint"];
-            var masterKey = config["CosmosMasterKey"];
+            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();      
+
+            //var endpoint = config["https://medusa.documents.azure.com:443/"];
+            var endpoint = "https://medusadb.documents.azure.com:443/";
+            var masterKey = "lqKXNQZZn4DaUPwptMG58iLWYovnbganfD1GlzhgwAejp39vydxsOTIVIGrQ6kGdEDehpVMp6RFzK4Ep7OBERg==";
 
             Client = new CosmosClient(endpoint, masterKey);
         }
