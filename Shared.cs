@@ -19,11 +19,23 @@ namespace Medusa
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();      
 
             //var endpoint = config["https://medusa.documents.azure.com:443/"];
-            var endpoint = "https://medusadb.documents.azure.com:443/";
-            var masterKey = "lqKXNQZZn4DaUPwptMG58iLWYovnbganfD1GlzhgwAejp39vydxsOTIVIGrQ6kGdEDehpVMp6RFzK4Ep7OBERg==";
-
+        
             Client = new CosmosClient(endpoint, masterKey);
         }
-
+        public static string EndPoint()
+        {
+            return endpoint;
+        }
+        public static string MasterKey()
+        {
+            return masterKey;
+        }
+        public static string PrimaryKey()
+        {
+            return primaryKey;
+        }
+        private static readonly string endpoint = "https://medusadb.documents.azure.com:443/";
+        private static readonly string masterKey = "lqKXNQZZn4DaUPwptMG58iLWYovnbganfD1GlzhgwAejp39vydxsOTIVIGrQ6kGdEDehpVMp6RFzK4Ep7OBERg==";
+        private static readonly string primaryKey = "B5f2e7jx6i6GeMT2tUP5fdXXsn2sDBXZY8pK5QAnqSocm9HmvSgEs6du9PMOP0CZEcHphn9ZEnpqtrASWzp3Xg==";
     }
 }

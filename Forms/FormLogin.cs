@@ -28,9 +28,9 @@ namespace Medusa
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">e</param>
-        public async void gHook_KeyUp(object sender, KeyEventArgs e)
+        public async void Ghook_KeyUp(object sender, KeyEventArgs e)
         {
-            string[] files;
+            List<string> files;
 
             if (string.IsNullOrEmpty(this.textUserId.Text))
             {
@@ -48,7 +48,8 @@ namespace Medusa
                 if (data_object.GetDataPresent(DataFormats.FileDrop))
                 {
                     message.fileType = WorkItemMessage.FileType.File;
-                    files = (string[])data_object.GetData(DataFormats.FileDrop);
+                    string[] temp = (string[]) data_object.GetData(DataFormats.FileDrop);
+                    files = new List<string>(temp);
                     foreach (string fileName in files)
                     {
                         string name = fileName;
@@ -66,17 +67,17 @@ namespace Medusa
                 // Text drop
                 { 
                     string currentClipboardText = Clipboard.GetText(System.Windows.Forms.TextDataFormat.Text);
-                    //message.content.Add(currentClipboardText);
+                    //message.content = new List<string>();
+                    message.content.Add(currentClipboardText);
                 }
-            }
-            
-            await this.copyOps.copyWorkItem(message).ConfigureAwait(false);
+                await this.copyOps.copyWorkItem(message).ConfigureAwait(false);
+            }           
         }
-        public async void gHook_KeyDown(object sender, KeyEventArgs e)
+        public async void Ghook_KeyDown(object sender, KeyEventArgs e)
         {
             if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
             {
-               // await this.pasteOps.PasteWorkItem(message).ConfigureAwait(false);
+                await this.pasteOps.PasteWorkItem().ConfigureAwait(false);
             }
         }
 
@@ -152,13 +153,13 @@ namespace Medusa
         
         private void SetUpKeyboardHook(GlobalKeyboardHook gHook)
         {
-            gHook.KeyUp += new KeyEventHandler(this.gHook_KeyUp);
+            gHook.KeyUp += new KeyEventHandler(this.Ghook_KeyUp);
             foreach (Keys key in Enum.GetValues(typeof(Keys)))
             {
                 gHook.HookedKeys.Add(key);
             }
 
-            gHook.KeyDown += new KeyEventHandler(gHook_KeyDown);
+            gHook.KeyDown += new KeyEventHandler(Ghook_KeyDown);
         }
 
         private void lstFiles_SelectedIndexChanged(object sender, EventArgs e)

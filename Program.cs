@@ -16,8 +16,9 @@ namespace Medusa
 
 
         public static string containerName = "loginCreds"; 
-        public static string dataBaseName = "medusadatabase"; 
-       [STAThread]
+        public static string dataBaseName = "medusadatabase";
+        public static string fileContainerName = "currentFiles";
+        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();

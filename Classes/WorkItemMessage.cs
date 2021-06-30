@@ -11,10 +11,11 @@
     /// </summary>
     public class WorkItemMessage
     {
-        public WorkItemMessage(string userId, FileType fileType, string[] content)
+        public WorkItemMessage(string userId, FileType fileType, List<string> content)
         {
             this.userId = userId ?? throw new ArgumentNullException(nameof(userId));
             this.fileType = fileType;
+            this.content = new List<string>();
         }
         public WorkItemMessage()
         {
@@ -29,6 +30,6 @@
 
         public string userId { get; set; }
         public FileType fileType { get; set; }
-        public string[] content { get; set; }
+        public List<string> content { get; set; }
     }
 }
